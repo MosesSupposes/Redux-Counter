@@ -1,20 +1,20 @@
-import { INCREMENT, DECREMENT } from '../actions';
+import * as C from '../constants'
 
 const initialState = {
   count: 0
 }
 
-// Our reducer that handles our two action cases:
-// increment and decrement. It receives the state
-// of our redux store, along with an action created
-// by our action creator. What does the reducer
-// need to do with the count in each case?
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT:
-    // Fill in the body of this case
-    case DECREMENT:
-    // Fill in the body of this case
+    case C.INCREMENT:
+      return state.count + 1
+    
+    case C.DECREMENT:
+      return state.count - 1
+    
+    case C.RESET:
+      return 0
+    
     default:
       return state;
   }
