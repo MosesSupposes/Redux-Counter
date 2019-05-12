@@ -1,20 +1,22 @@
-module Main exposing (..)
+module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Browser
-import Html exposing (Html, text, div, h1, img)
+import Html exposing (..)
 import Html.Attributes exposing (src)
+import Html.Events exposing (onClick)
+
 
 
 ---- MODEL ----
 
 
 type alias Model =
-    {}
+    Int
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( {}, Cmd.none )
+    ( 0, Cmd.none )
 
 
 
@@ -22,12 +24,22 @@ init =
 
 
 type Msg
-    = NoOp
+    = Incrememnt
+    | Decrement
+    | Reset
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        Incrememnt ->
+            ( model + 1, Cmd.none )
+
+        Decrement ->
+            ( model - 1, Cmd.none )
+
+        Reset ->
+            ( 0, Cmd.none )
 
 
 
@@ -37,8 +49,10 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src "/logo.svg" ] []
-        , h1 [] [ text "Your Elm App is working!" ]
+        [ div [] [ p [] [ text (String.fromInt model) ] ]
+        , button [ onClick Incrememnt ] [ text "+" ]
+        , button [ onClick Decrement ] [ text "-" ]
+        , button [ onClick Reset ] [ text "reset" ]
         ]
 
 
