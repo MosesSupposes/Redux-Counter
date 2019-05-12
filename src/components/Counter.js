@@ -20,11 +20,14 @@ class Counter extends Component {
         return (
             <p>
                 Clicked: {this.props.count} times
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={this.props.increment}>
                     +
                 </button>
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={this.props.decrement}>
                     -
+                </button>
+                <button onClick={this.props.reset}>
+                    reset
                 </button>
                  {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
@@ -64,4 +67,4 @@ const mapDispatchToProps = (_) =>
 // makes itself known to this component.
 
 // export default connect(mapStateToProps, { increment, decrement, reset })(Counter);
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps('can\'t wait for thunks!'))(Counter);
