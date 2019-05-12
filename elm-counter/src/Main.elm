@@ -2,11 +2,12 @@ module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (class, src)
+import Html.Attributes exposing (class, contenteditable, src)
 import Html.Events exposing (onClick)
 
 
 
+-- import Keyboard exposing (RawKey)
 ---- MODEL ----
 
 
@@ -30,6 +31,10 @@ init =
 
 
 
+-- SUBSCRIPTIONS
+-- subscriptions : Model -> Sub Msg
+-- subscriptions model =
+--     Keyboard.ups KeyUp
 ---- UPDATE ----
 
 
@@ -37,6 +42,10 @@ type Msg
     = Incrememnt Player
     | Decrement Player
     | Reset Player
+
+
+
+-- | KeyUp RawKey
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -65,6 +74,11 @@ update msg model =
 
 
 
+-- KeyUp key ->
+{--| TODO: Set "contentEditable" to False and update the player's name in the model
+                 if the enter key was pressed
+            --}
+-- ( model, Cmd.none )
 ---- VIEW ----
 
 
@@ -80,7 +94,7 @@ lifeCounter : Player -> Html Msg
 lifeCounter player =
     div []
         [ div []
-            [ p [] [ text player.name ]
+            [ span [ contenteditable True ] [ text player.name ]
             , p [] [ text (String.fromInt player.score) ]
             ]
         , div []
@@ -92,6 +106,15 @@ lifeCounter player =
 
 
 
+-- custom event listener
+-- onKeyDown : (Int -> msg) -> Attribute msg
+-- onKeyDown tagger =
+--     on "keyup" (Json.map tagger keyCode)
+-- type alias KeyCode =
+--     Int
+-- keyCode : Json.Decoder KeyCode
+-- keyCode =
+--   Json.field "keyCode" Json.int
 ---- PROGRAM ----
 
 
@@ -101,5 +124,7 @@ main =
         { view = view
         , init = \_ -> init
         , update = update
+
+        -- , subscriptions = subscriptions
         , subscriptions = always Sub.none
         }
