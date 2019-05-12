@@ -22,8 +22,8 @@ type alias Model =
 
 init : ( Model, Cmd Msg )
 init =
-    ( { p1 = Player "Moses" 0
-      , p2 = Player "Casper" 0
+    ( { p1 = Player "Moses" 20
+      , p2 = Player "Casper" 20
       }
     , Cmd.none
     )
@@ -58,10 +58,10 @@ update msg model =
 
         Reset player ->
             if player.name == model.p1.name then
-                ( { model | p1 = { player | score = 0 } }, Cmd.none )
+                ( { model | p1 = { player | score = 20 } }, Cmd.none )
 
             else
-                ( { model | p2 = { player | score = 0 } }, Cmd.none )
+                ( { model | p2 = { player | score = 20 } }, Cmd.none )
 
 
 
