@@ -2,7 +2,7 @@ module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (src)
+import Html.Attributes exposing (class, src)
 import Html.Events exposing (onClick)
 
 
@@ -70,21 +70,24 @@ update msg model =
 
 view : Model -> Html Msg
 view { p1, p2 } =
+    div [ class "App" ]
+        [ lifeCounter p1
+        , lifeCounter p2
+        ]
+
+
+lifeCounter : Player -> Html Msg
+lifeCounter player =
     div []
         [ div []
-            [ p [] [ text p1.name ]
-            , p [] [ text (String.fromInt p1.score) ]
+            [ p [] [ text player.name ]
+            , p [] [ text (String.fromInt player.score) ]
             ]
-        , button [ onClick (Incrememnt p1) ] [ text "+" ]
-        , button [ onClick (Decrement p1) ] [ text "-" ]
-        , button [ onClick (Reset p1) ] [ text "reset" ]
         , div []
-            [ p [] [ text "Casper" ]
-            , p [] [ text (String.fromInt p2.score) ]
+            [ button [ onClick (Incrememnt player) ] [ text "+" ]
+            , button [ onClick (Decrement player) ] [ text "-" ]
+            , button [ onClick (Reset player) ] [ text "reset" ]
             ]
-        , button [ onClick (Incrememnt p2) ] [ text "+" ]
-        , button [ onClick (Decrement p2) ] [ text "-" ]
-        , button [ onClick (Reset p2) ] [ text "reset" ]
         ]
 
 
