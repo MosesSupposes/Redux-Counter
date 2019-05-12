@@ -43,21 +43,21 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Incrememnt player ->
-            if player.name == "Moses" then
+            if player.name == model.p1.name then
                 ( { model | p1 = { player | score = player.score + 1 } }, Cmd.none )
 
             else
                 ( { model | p2 = { player | score = player.score + 1 } }, Cmd.none )
 
         Decrement player ->
-            if player.name == "Moses" then
+            if player.name == model.p1.name then
                 ( { model | p1 = { player | score = player.score - 1 } }, Cmd.none )
 
             else
                 ( { model | p2 = { player | score = player.score - 1 } }, Cmd.none )
 
         Reset player ->
-            if player.name == "Moses" then
+            if player.name == model.p1.name then
                 ( { model | p1 = { player | score = 0 } }, Cmd.none )
 
             else
