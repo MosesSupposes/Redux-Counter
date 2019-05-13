@@ -38,6 +38,9 @@ button {
   width: 100vw;
   background-image: url("http://i.imgur.com/1QQBkiT.jpg");
   background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .score {
@@ -46,4 +49,10 @@ button {
 
 .name {
   font-size: 1.75rem;
+}
+
+.life-counter {
+  margin: 0 2rem;
+  position: relative;
+  bottom: 2rem;
 }
