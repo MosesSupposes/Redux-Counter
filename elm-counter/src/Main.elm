@@ -92,7 +92,7 @@ view { p1, p2 } =
 
 lifeCounter : Player -> Html Msg
 lifeCounter player =
-    div []
+    div [ class "life-counter" ]
         [ div []
             [ span [ class "name", contenteditable True ] [ text player.name ]
             , p [ class "score" ] [ text (String.fromInt player.score) ]
