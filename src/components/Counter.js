@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { increment, decrement, reset } from '../actions';
 
+
 class Counter extends Component {
     incrementIfOdd = () => {
         // Stretch Problem: Implement an increment function that
         // only increments if the counter value is odd
+        const isOdd = num => num % 2
+        isOdd(this.props.count) && this.props.increment()
     };
 
     incrementAsync = () => {
         // Stretch Problem: Implement an increment function that
         // increments after waiting for one second
+        setTimeout(() => { this.props.incremnent }, 1000)
     };
 
     render() {
