@@ -49,6 +49,7 @@ button {
 
 .name {
   font-size: 1.75rem;
+  padding: .5rem 1rem;
 }
 
 .life-counter {
