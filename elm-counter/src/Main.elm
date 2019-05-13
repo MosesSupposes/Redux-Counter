@@ -94,8 +94,8 @@ lifeCounter : Player -> Html Msg
 lifeCounter player =
     div []
         [ div []
-            [ span [ contenteditable True ] [ text player.name ]
-            , p [] [ text (String.fromInt player.score) ]
+            [ span [ class "name", contenteditable True ] [ text player.name ]
+            , p [ class "score" ] [ text (String.fromInt player.score) ]
             ]
         , div []
             [ button [ onClick (Incrememnt player) ] [ text "+" ]
