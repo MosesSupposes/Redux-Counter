@@ -1,5 +1,8 @@
 # Redux Counter
 
+###### Aside: Naviagate to the [elm-counter](elm-counter) folder to view/extend the project.
+
+
 ## Topics
 
 * Immutability in JavaScript
