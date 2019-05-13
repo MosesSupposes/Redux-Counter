@@ -84,7 +84,7 @@ update msg model =
 
 view : Model -> Html Msg
 view { p1, p2 } =
-    div [ class "App" ]
+    div [ class "app" ]
         [ lifeCounter p1
         , lifeCounter p2
         ]
